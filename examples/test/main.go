@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"net/http"
 	"os"
-	"acronis/zerodt"
 	"time"
 
 	"github.com/Sirupsen/logrus"
+	"github.com/acronis/zerodt"
 )
 
 func sleep(w http.ResponseWriter, r *http.Request) {
