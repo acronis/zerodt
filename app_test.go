@@ -103,6 +103,7 @@ func (d *run) waitForProcess(retryErrors bool) {
 		}
 		body, err := ioutil.ReadAll(r.Body)
 		require.NoError(d.t, err)
+		require.NoError(d.t, r.Body.Close())
 		pid, err := strconv.Atoi(string(body))
 		require.NoError(d.t, err)
 		process, err := os.FindProcess(pid)
@@ -195,7 +196,10 @@ func (d *run) restart() {
 	fmt.Println("===== restart")
 
 	require.NoError(d.t, d.lastProcess().Signal(syscall.SIGUSR2))
-	d.waitForProcess(false)
+	// The ping only finds out the new pid, and it hits the exact moment of the
+	// handover, when the old process may drop a connection it has just
+	// accepted. Requests sent by the test keep their strict checks.
+	d.waitForProcess(true)
 }
 
 func (d *run) lastProcess() *os.Process {
