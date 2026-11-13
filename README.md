@@ -1,8 +1,7 @@
 # ZeroDT
 
-[![GoDoc](https://godoc.org/github.com/acronis/zerodt?status.svg)](https://godoc.org/github.com/acronis/zerodt)
-[![Build Status](https://travis-ci.org/acronis/zerodt.svg?branch=master)](https://travis-ci.org/acronis/zerodt)
-[![Go Report Status](https://goreportcard.com/badge/github.com/acronis/zerodt)](https://goreportcard.com/report/github.com/acronis/zerodt)
+[![Go Reference](https://pkg.go.dev/badge/github.com/acronis/zerodt.svg)](https://pkg.go.dev/github.com/acronis/zerodt)
+[![Build Status](https://github.com/acronis/zerodt/actions/workflows/go.yml/badge.svg)](https://github.com/acronis/zerodt/actions/workflows/go.yml)
 
 Package `ZeroDT` offers a zero downtime restart and a graceful shutdown for HTTP servers. Key features:
 

@@ -25,7 +25,7 @@ type App struct {
 
 // NewApp returns a new instance of App.
 func NewApp(servers ...*http.Server) *App {
-	return &App{nil, nil, nil, servers}
+	return &App{servers: servers}
 }
 
 // ListenAndServe calls ListenAndServe for all servers and returns first error if happens or nil.
