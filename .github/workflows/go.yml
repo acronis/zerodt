@@ -19,6 +19,12 @@ jobs:
     - uses: actions/setup-go@v7
       with:
         go-version: ${{ matrix.go }}
+    - if: always()
+      run: |
+        uname -r
+        go test -count=5 -v -run 'TestPipeMessenger$' . 2>&1 | grep -E '^(=== RUN|--- |ok|FAIL)' | sort | uniq -c
+        go test -count=1 -v -run 'TestSetDefaultGoSocketOptions' . 2>&1 | tail -8
+        go test -count=1 -v -race . 2>&1 | grep -E '^(--- FAIL|=== RUN)' | grep -B1 'FAIL' 
     - run: go test -race ./...
     - run: GOOS=windows go build ./...
 
