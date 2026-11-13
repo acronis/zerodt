@@ -1,0 +1,8 @@
+version: "2"
+linters:
+  exclusions:
+    presets:
+      - std-error-handling
+issues:
+  # The code before the move to github.com/acronis is not linted.
+  new-from-rev: eca9df7f134f7f0f6d23472bc53e41979396f487
